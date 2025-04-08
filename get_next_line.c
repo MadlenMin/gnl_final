@@ -6,7 +6,7 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:48:04 by mminasya          #+#    #+#             */
-/*   Updated: 2025/04/08 21:33:09 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/04/08 22:12:13 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ char *fill_stash(int fd, char *stash)
 	while(bytes_read)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if(bytes_read <= 0)
+		if(bytes_read < 0)
 		break;
 	buffer[bytes_read] = '\0';
 	tmp = ft_strjoin(stash, buffer);
 	if(!tmp)
-	return(free(stash), free(buffer), NULL);
-free(stash);
-stash = tmp;
-}
+		return(free(stash), free(buffer), NULL);
+	free(stash);
+	stash = tmp;
+	}
 	free(buffer);
 	if(bytes_read < 0)
 		return(free(stash),NULL);
@@ -46,7 +46,7 @@ char *update(char *stash)
 	char *new_stash;
 	size_t len;
 	char *tmp;
-
+	
 	if(!stash)
 		return(NULL);
 	new_stash = ft_strchr(stash, '\n');
@@ -57,8 +57,9 @@ char *update(char *stash)
 		if(!tmp)
 			return(NULL);
 		free(stash);
-		return (tmp);
+		stash = tmp;
 	}
+	else
 	free(stash);
 	return(NULL);
 }
@@ -94,13 +95,21 @@ char *get_next_line(int fd)
 	stash = update(stash);
 	return(line);
 }
-
-
+/*
 int main()
 {
 	int fd;
 	fd = open("test.txt", O_RDONLY);
+		printf("%s", get_next_line(fd));
+		printf("%s", get_next_line(fd));	
 	printf("%s", get_next_line(fd));
+
+		printf("%s", get_next_line(fd));
+		
+		printf("%s", get_next_line(fd));
+		
+		printf("%s", get_next_line(fd));
+		
 	close(fd);
 	return 0;
-}
+}*/
