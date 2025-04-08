@@ -98,18 +98,17 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		len;
 	char	*new;
 
-	if (!s2)
-		return (ft_strdup(s1));
+	if (!s1)
+		return (ft_strdup(s2));
+	else if (!s2)
+		return(ft_strdup(s1));
 	len = ft_strlen(s1) + ft_strlen(s2);
 	new = (char *)malloc(len + 1);
 	if (!new)
 		return (NULL);
 	i = 0;
-	while (s1[i])
-	{
+	while (s1[++i])
 		new[i] = s1[i];
-		i++;
-	}
 	j = 0;
 	while (s2[j])
 		new[i++] = s2[j++];

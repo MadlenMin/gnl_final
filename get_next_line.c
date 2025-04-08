@@ -27,14 +27,14 @@ char *fill_stash(int fd, char *stash)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if(bytes_read <= 0)
-			break;
-		buffer[bytes_read] = '\0';
-		tmp = ft_strjoin(stash, buffer);
-		if(!tmp)
-			return(free(stash), free(buffer), NULL);
-		free(stash);
-		stash = tmp;
-	}
+		break;
+	buffer[bytes_read] = '\0';
+	tmp = ft_strjoin(stash, buffer);
+	if(!tmp)
+	return(free(stash), free(buffer), NULL);
+free(stash);
+stash = tmp;
+}
 	free(buffer);
 	if(bytes_read < 0)
 		return(free(stash),NULL);
