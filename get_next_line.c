@@ -6,7 +6,7 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:48:04 by mminasya          #+#    #+#             */
-/*   Updated: 2025/04/08 21:25:09 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/04/08 21:33:09 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char *fill_stash(int fd, char *stash)
 
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if(!buffer)
-		return(free(buffer) , NULL);
+		return(NULL);
 	bytes_read = 1;
 	while(bytes_read)
 	{
@@ -35,8 +35,9 @@ char *fill_stash(int fd, char *stash)
 		free(stash);
 		stash = tmp;
 	}
+	free(buffer);
 	if(bytes_read < 0)
-		return(free(buffer),free(stash),NULL);
+		return(free(stash),NULL);
 	return(stash); 
 }
 
@@ -58,7 +59,8 @@ char *update(char *stash)
 		free(stash);
 		return (tmp);
 	}
-	return(stash);
+	free(stash);
+	return(NULL);
 }
 
 char *get_the_line(char *stash)
@@ -70,20 +72,15 @@ char *get_the_line(char *stash)
 		return(NULL);
 	position = ft_strchr(stash, '\n');
 	if(position)
-	{
 		line = ft_substr(stash, 0, (position - stash) + 1);
-	}
 	else 
-	{
 		line = ft_substr(stash, 0, ft_strlen(stash));
-	}
 	return(line);
 }
 
 char *get_next_line(int fd)
 {
 	static char *stash;
-	char *result;
 	char *line;
 
 	if(fd < 0 || BUFFER_SIZE <= 0)
@@ -92,11 +89,10 @@ char *get_next_line(int fd)
 	if(!stash)
 		return(NULL);
 	line = get_the_line(stash);
-	stash = update(stash);
 	if(!line)
-		return (NULL);
-	result = line;
-	return(result);
+		return(NULL);
+	stash = update(stash);
+	return(line);
 }
 
 
