@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 20:48:04 by mminasya          #+#    #+#             */
-/*   Updated: 2025/04/09 22:05:06 by mminasya         ###   ########.fr       */
+/*   Created: 2025/04/09 22:17:01 by mminasya          #+#    #+#             */
+/*   Updated: 2025/04/09 22:18:17 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char *fill_stash(int fd, char *stash)
 	free(stash);
 	stash = tmp;
 	}
-}
 	free(buffer);
 	if(bytes_read < 0)
 		return(free(stash),NULL);
