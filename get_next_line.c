@@ -6,13 +6,13 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 22:17:01 by mminasya          #+#    #+#             */
-/*   Updated: 2025/04/09 22:18:17 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/04/09 22:21:42 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 //#include <stdio.h>
-
+//BBOOOJJJEEEEEVUGVUVHJVJHB<KHBKB<HBKBKJ
 char *fill_stash(int fd, char *stash)
 {
 	char *buffer;
