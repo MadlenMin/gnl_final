@@ -6,12 +6,12 @@
 /*   By: mminasya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 20:48:04 by mminasya          #+#    #+#             */
-/*   Updated: 2025/04/08 22:12:13 by mminasya         ###   ########.fr       */
+/*   Updated: 2025/04/09 20:39:20 by mminasya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
+//#include <stdio.h>
 
 char *fill_stash(int fd, char *stash)
 {
